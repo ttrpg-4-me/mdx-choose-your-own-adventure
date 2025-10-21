@@ -4,6 +4,13 @@ This is a tool designed to transform MDX documents into choose your own adventur
 
 At this time the repo is just a work in progress, a partial MDX parser has been built.
 
+## Run Tests
+
+```shell
+npm install
+npm test
+```
+
 ## Example
 
 In:
