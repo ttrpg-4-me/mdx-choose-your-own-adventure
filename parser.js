@@ -5,7 +5,6 @@ import YAML from "yaml";
 
 const scriptTypes = ["mdxjsEsm", "mdxFlowExpression", "mdxJsxFlowElement"];
 
-
 function parseHeader(tokens) {
   if (tokens.length == 0 || tokens.at(-1).type != "thematicBreak") {
     return {};
@@ -41,14 +40,17 @@ function parseTransition(transition) {
       text: transition.children[0].children[0].children[0].value,
     };
   }
-  if (transition.children[0].type == "mdxJsxFlowElement" && transition.children[0].name.toLowerCase() == "if") {
+  if (
+    transition.children[0].type == "mdxJsxFlowElement" &&
+    transition.children[0].name.toLowerCase() == "if"
+  ) {
     return {
       transitionCriteria: transition.children[0].attributes[0].value.value,
       header: transition.children[0].children[0].children[0].url,
       text: transition.children[0].children[0].children[0].children[0].value,
     };
   }
-  
+
   throw new TypeError();
 }
 

@@ -13,25 +13,30 @@ test("parse mdx into CYOA format", async () => {
   expect(jsonData).toBe(fs.readFileSync("test_output.json", "utf8"));
 });
 
-
 test("run a CYOA game", async () => {
   // Starting the story with 50 cr
-  const cyoaRunner = new CYOARunner(JSON.parse(fs.readFileSync("test_output.json", "utf8")))
-  expect(cyoaRunner.inventory.credits).toBe(50)
-  expect(cyoaRunner.isDone).toBe(false)
+  const cyoaRunner = new CYOARunner(
+    JSON.parse(fs.readFileSync("test_output.json", "utf8")),
+  );
+  expect(cyoaRunner.inventory.credits).toBe(50);
+  expect(cyoaRunner.isDone).toBe(false);
 
-  expect(cyoaRunner.transitionOptions[0].text).toBe("Buy some soup from the woman with 1 cr")
-  expect(cyoaRunner.transitionOptions[1].text).toBe("Buy some really special soup from the woman for 100 cr")
-  expect(cyoaRunner.transitionOptions[2].text).toBe("Do that other thing")
+  expect(cyoaRunner.transitionOptions[0].text).toBe(
+    "Buy some soup from the woman with 1 cr",
+  );
+  expect(cyoaRunner.transitionOptions[1].text).toBe(
+    "Buy some really special soup from the woman for 100 cr",
+  );
+  expect(cyoaRunner.transitionOptions[2].text).toBe("Do that other thing");
 
-  expect(cyoaRunner.transitionOptions[0].isValid).toBe(true)
+  expect(cyoaRunner.transitionOptions[0].isValid).toBe(true);
   // can't afford the super special soup
-  expect(cyoaRunner.transitionOptions[1].isValid).toBe(false)
-  expect(cyoaRunner.transitionOptions[2].isValid).toBe(true)
+  expect(cyoaRunner.transitionOptions[1].isValid).toBe(false);
+  expect(cyoaRunner.transitionOptions[2].isValid).toBe(true);
 
   // Let's go buy soup, should cost 1 cr
   // This is also an end state so we should see that we're done
-  cyoaRunner.transition("#suprise-soup")
-  expect(cyoaRunner.inventory.credits).toBe(49)
-  expect(cyoaRunner.isDone).toBe(true)
+  cyoaRunner.transition("#suprise-soup");
+  expect(cyoaRunner.inventory.credits).toBe(49);
+  expect(cyoaRunner.isDone).toBe(true);
 });
