@@ -55,7 +55,7 @@ Out:
 ```json
 {
   "passages": {
-    "start": {
+    "#start": {
       "initializationScript": [],
       "text": [
         "You arrive in block. A number of hot food vendors line the bedraggled streets and a few catch your eye..."
@@ -73,7 +73,7 @@ Out:
         }
       ]
     },
-    "suprise-soup": {
+    "#suprise-soup": {
       "initializationScript": [
         "inventory.credits = inventory.credits - 1"
       ],
@@ -82,7 +82,7 @@ Out:
       ],
       "transitions": []
     },
-    "other-thing": {
+    "#other-thing": {
       "initializationScript": [],
       "text": [
         "You do the other thing"

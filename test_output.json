@@ -1,6 +1,6 @@
 {
   "passages": {
-    "start": {
+    "#start": {
       "initializationScript": [],
       "text": [
         "You arrive in block. A number of hot food vendors line the bedraggled streets and a few catch your eye..."
@@ -18,7 +18,7 @@
         }
       ]
     },
-    "suprise-soup": {
+    "#suprise-soup": {
       "initializationScript": [
         "inventory.credits = inventory.credits - 1"
       ],
@@ -27,7 +27,7 @@
       ],
       "transitions": []
     },
-    "other-thing": {
+    "#other-thing": {
       "initializationScript": [],
       "text": [
         "You do the other thing"

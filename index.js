@@ -34,7 +34,7 @@ function parseType(tokens, valid_types, list) {
 }
 
 function convertStringMarkdownHeaderFormat(s) {
-  return s.toLowerCase().replaceAll(" ", "-");
+  return "#" + s.toLowerCase().replaceAll(" ", "-");
 }
 
 function updatePassageScript(tokens, passage) {
