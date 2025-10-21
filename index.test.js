@@ -1,19 +1,13 @@
-import {parseMdxToAst, parseTree} from "./index.js"
-import fs from "fs"
-
+import { parseMdxToAst, parseTree } from "./index.js";
+import fs from "fs";
 
 test("churn through ast", async () => {
-    const fileName = 'example.mdx'
-    const ast = await parseMdxToAst(fs.readFileSync(fileName))
+  const fileName = "example.mdx";
+  const ast = await parseMdxToAst(fs.readFileSync(fileName));
 
-    const tree = parseTree(ast)
+  const tree = parseTree(ast);
 
-    const jsonData = JSON.stringify(tree, null, 2);
+  const jsonData = JSON.stringify(tree, null, 2);
 
-    expect(jsonData).toBe(fs.readFileSync("test_output.json", "utf8"))
-        
-})
-
-
-
-
+  expect(jsonData).toBe(fs.readFileSync("test_output.json", "utf8"));
+});
