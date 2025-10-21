@@ -4,6 +4,53 @@ This is a tool designed to transform MDX documents into choose your own adventur
 
 At this time the repo is just a work in progress, a partial MDX parser has been built.
 
+## Usage
+
+```console
+$ node
+Welcome to Node.js v25.0.0.
+Type ".help" for more information.
+> const { CYOARunner } = await import("./runner.js");
+undefined
+> const cyoaRunner = new CYOARunner(JSON.parse(fs.readFileSync("test_output.json", "utf8")))
+undefined
+> cyoaRunner.passageText
+[
+  'You arrive in block. A number of hot food vendors line the bedraggled streets and a few catch your eye...'
+]
+> cyoaRunner.inventory
+{ credits: 50 }
+> cyoaRunner.transitionOptions
+[
+  {
+    transitionCriteria: 'inventory.credits > 1',
+    header: '#suprise-soup',
+    text: 'Buy some soup from the woman with 1 cr',
+    isValid: true
+  },
+  {
+    transitionCriteria: 'inventory.credits > 100',
+    header: '#super-suprise-soup',
+    text: 'Buy some really special soup from the woman for 100 cr',
+    isValid: false
+  },
+  {
+    transitionCriteria: null,
+    header: '#other-thing',
+    text: 'Do that other thing',
+    isValid: true
+  }
+]
+> cyoaRunner.transition('#suprise-soup')
+undefined
+> cyoaRunner.inventory
+{ credits: 49 }
+> cyoaRunner.passageText
+[ 'Great soup!\nReally good' ]
+> cyoaRunner.isDone
+true
+```
+
 ## Run Tests
 
 ```shell
@@ -13,7 +60,7 @@ npm test
 
 ## Example
 
-In:
+The following MDX file is consumed:
 
 ```markdown
 ---
@@ -56,7 +103,7 @@ BEST EVER SOUP!
 You do the other thing
 ```
 
-Out:
+Internally, the file is converted to this representation:
 
 ```json
 {
@@ -124,3 +171,5 @@ Out:
   ]
 }
 ```
+
+Finally, a runner is provided to actually navigate through the choose your own adventure
