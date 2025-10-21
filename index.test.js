@@ -6,13 +6,11 @@ test("churn through ast", async () => {
     const fileName = 'example.mdx'
     const ast = await parseMdxToAst(fs.readFileSync(fileName))
 
-    // expect(console.log(JSON.stringify(ast, null, 2))).toBe("");
+    const tree = parseTree(ast)
 
-    parseTree(ast)
+    const jsonData = JSON.stringify(tree, null, 2);
 
-    // const parsed = await parseMdxToAst(fs.readFileSync(fileName)).then(ast => {
-    //     expect(console.log(JSON.stringify(ast, null, 2)))
-    //     .toBe("")
+    expect(jsonData).toBe(fs.readFileSync("test_output.json", "utf8"))
         
 })
 

@@ -1,0 +1,47 @@
+{
+  "passages": {
+    "start": {
+      "initializationScript": [],
+      "text": [
+        "You arrive in block. A number of hot food vendors line the bedraggled streets and a few catch your eye..."
+      ],
+      "transitions": [
+        null,
+        {
+          "transitionCriteria": null,
+          "header": "#other-thing",
+          "text": "Do that other thing"
+        }
+      ]
+    },
+    "suprise-soup": {
+      "initializationScript": [
+        "inventory.credits = inventory.credits - 1"
+      ],
+      "text": [
+        "Great soup!\nReally good"
+      ],
+      "transitions": []
+    },
+    "other-thing": {
+      "initializationScript": [],
+      "text": [
+        "You do the other thing"
+      ],
+      "transitions": []
+    }
+  },
+  "metaData": {
+    "title": "Some story",
+    "author": "John Doe",
+    "costToRead": 0,
+    "triggers": [
+      "spooky soups",
+      "the great outdoors"
+    ]
+  },
+  "initializationScript": [
+    "inventory.credits = 50",
+    "export function If({ when, children }) {\n  return when ? <> {children} </> : <> </>;\n}"
+  ]
+}

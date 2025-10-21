@@ -115,9 +115,6 @@ export function parseTree(ast) {
         parsePassage(tokens, tree)
     }
 
-    const jsonData = JSON.stringify(tree, null, 2);
-    fs.writeFileSync('output.json', jsonData, 'utf8');
-
     return tree
 }
 
