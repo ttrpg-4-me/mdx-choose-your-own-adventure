@@ -56,7 +56,15 @@ function parseTransition(transition) {
       text: transition.children[0].children[0].children[0].value,
     };
   }
-  return null;
+  if (transition.children[0].type == "mdxJsxFlowElement" && transition.children[0].name.toLowerCase() == "if") {
+    return {
+      transitionCriteria: transition.children[0].attributes[0].value.value,
+      header: transition.children[0].children[0].children[0].url,
+      text: transition.children[0].children[0].children[0].children[0].value,
+    };
+  }
+  
+  throw new TypeError();
 }
 
 function parsePassage(tokens, tree) {

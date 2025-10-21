@@ -61,7 +61,11 @@ Out:
         "You arrive in block. A number of hot food vendors line the bedraggled streets and a few catch your eye..."
       ],
       "transitions": [
-        null,
+        {
+          "transitionCriteria": "inventory.credits > 1",
+          "header": "#suprise-soup",
+          "text": "Buy some soup from the woman with 1 cr"
+        },
         {
           "transitionCriteria": null,
           "header": "#other-thing",
