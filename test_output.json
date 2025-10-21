@@ -45,7 +45,6 @@
     ]
   },
   "initializationScript": [
-    "inventory.credits = 50",
-    "export function If({ when, children }) {\n  return when ? <> {children} </> : <> </>;\n}"
+    "inventory.credits = 50"
   ]
 }

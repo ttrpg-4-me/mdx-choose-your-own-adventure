@@ -24,10 +24,6 @@ triggers: ["spooky soups", "the great outdoors"]
 ---
 
 {inventory.credits = 50}
-export function If({ when, children }) {
-  return when ? <> {children} </> : <> </>;
-}
-
 
 ## Start
 
@@ -100,8 +96,7 @@ Out:
     ]
   },
   "initializationScript": [
-    "inventory.credits = 50",
-    "export function If({ when, children }) {\n  return when ? <> {children} </> : <> </>;\n}"
+    "inventory.credits = 50"
   ]
 }
 ```
