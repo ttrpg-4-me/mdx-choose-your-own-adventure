@@ -32,6 +32,9 @@ You arrive in block. A number of hot food vendors line the bedraggled streets an
 - <If when={inventory.credits > 1}> 
     [Buy some soup from the woman with 1 cr](#suprise-soup)
   </If>
+- <If when={inventory.credits > 100}> 
+    [Buy some really special soup from the woman for 100 cr](#super-suprise-soup)
+  </If>
 - [Do that other thing](#other-thing)
 
 ## Suprise Soup
@@ -40,6 +43,13 @@ You arrive in block. A number of hot food vendors line the bedraggled streets an
 
 Great soup!
 Really good
+
+## Super Suprising Soup
+
+{inventory.credits = inventory.credits - 100}
+
+WOW WOW WOW!
+BEST EVER SOUP!
 
 ## Other Thing
 
@@ -63,6 +73,11 @@ Out:
           "text": "Buy some soup from the woman with 1 cr"
         },
         {
+          "transitionCriteria": "inventory.credits > 100",
+          "header": "#super-suprise-soup",
+          "text": "Buy some really special soup from the woman for 100 cr"
+        },
+        {
           "transitionCriteria": null,
           "header": "#other-thing",
           "text": "Do that other thing"
@@ -75,6 +90,15 @@ Out:
       ],
       "text": [
         "Great soup!\nReally good"
+      ],
+      "transitions": []
+    },
+    "#super-suprising-soup": {
+      "initializationScript": [
+        "inventory.credits = inventory.credits - 100"
+      ],
+      "text": [
+        "WOW WOW WOW!\nBEST EVER SOUP!"
       ],
       "transitions": []
     },

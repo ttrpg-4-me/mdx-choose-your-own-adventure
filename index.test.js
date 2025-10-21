@@ -21,12 +21,13 @@ test("run a CYOA game", async () => {
   expect(cyoaRunner.isDone).toBe(false)
 
   expect(cyoaRunner.transitionOptions[0].text).toBe("Buy some soup from the woman with 1 cr")
-
-  expect(cyoaRunner.transitionOptions[1].text).toBe("Do that other thing")
+  expect(cyoaRunner.transitionOptions[1].text).toBe("Buy some really special soup from the woman for 100 cr")
+  expect(cyoaRunner.transitionOptions[2].text).toBe("Do that other thing")
 
   expect(cyoaRunner.transitionOptions[0].isValid).toBe(true)
-
-  expect(cyoaRunner.transitionOptions[1].isValid).toBe(true)
+  // can't afford the super special soup
+  expect(cyoaRunner.transitionOptions[1].isValid).toBe(false)
+  expect(cyoaRunner.transitionOptions[2].isValid).toBe(true)
 
   // Let's go buy soup, should cost 1 cr
   // This is also an end state so we should see that we're done
