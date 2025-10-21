@@ -1,0 +1,20 @@
+{
+  "name": "mdx-choose-your-own-adventure",
+  "version": "1.0.0",
+  "description": "A utility for parsing an MDX file into a choose your own adventure game.",
+  "license": "MIT",
+  "author": "router",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
+  },
+  "devDependencies": {
+    "jest": "^30.2.0"
+  },
+  "dependencies": {
+    "remark": "^15.0.1",
+    "remark-mdx": "^3.1.1",
+    "yaml": "^2.8.1"
+  }
+}
