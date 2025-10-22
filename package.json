@@ -1,10 +1,14 @@
 {
   "name": "mdx-choose-your-own-adventure",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A utility for parsing an MDX file into a choose your own adventure game.",
   "license": "MIT",
   "author": "router",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ttrpg-4-me/mdx-choose-your-own-adventure.git"
+  },
   "main": "index.js",
   "scripts": {
     "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js",
