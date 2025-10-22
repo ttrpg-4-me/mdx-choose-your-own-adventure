@@ -51,7 +51,7 @@ function parseTransition(transition) {
     };
   }
 
-  throw new TypeError();
+  throw new TypeError(`No implementation available for parsing MDX element of ${transition.children[0].type} type`);
 }
 
 function parsePassage(tokens, tree) {
@@ -85,7 +85,8 @@ function parsePassage(tokens, tree) {
       });
       continue;
     }
-    throw new TypeError();
+    throw new TypeError(`No implementation available for parsing MDX element of ${tokens.at(-1).type} type`);
+
   }
 }
 
