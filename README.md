@@ -173,3 +173,7 @@ Internally, the file is converted to this representation:
 ```
 
 Finally, a runner is provided to actually navigate through the choose your own adventure
+
+## Security
+
+Never use this package to run untrusted MDX files. Treat MDX files like source code, as any code in those files will be executed.
