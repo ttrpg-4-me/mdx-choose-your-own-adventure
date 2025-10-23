@@ -1,6 +1,6 @@
 {
   "name": "mdx-choose-your-own-adventure",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A utility for parsing an MDX file into a choose your own adventure game.",
   "license": "MIT",
   "author": "router",
