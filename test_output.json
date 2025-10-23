@@ -50,15 +50,19 @@
     }
   },
   "metaData": {
-    "title": "Some story",
     "author": "John Doe",
     "costToRead": 0,
     "triggers": [
       "spooky soups",
       "the great outdoors"
-    ]
+    ],
+    "title": "My Big Beautiful Story"
   },
   "initializationScript": [
     "inventory.credits = 50"
+  ],
+  "introText": [
+    "I bet you'll find it spooky!",
+    "Really Really Scary"
   ]
 }
