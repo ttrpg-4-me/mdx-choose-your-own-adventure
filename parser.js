@@ -29,7 +29,13 @@ function parseType(tokens, valid_types, list) {
 }
 
 function convertStringMarkdownHeaderFormat(s) {
-  return "#" + s.toLowerCase().replaceAll(" ", "-");
+  let header = s.toLowerCase().replaceAll(" ", "-");
+  const specialCharacters = ['?', '*', '\\', '[', ']', '*', '(', ')', '/', '!', ',', '’', "'", '!']
+  for (const char of specialCharacters){
+    header = header.replace(char,"")
+  }
+
+  return "#" + header
 }
 
 function parseTransition(transition) {
@@ -85,7 +91,7 @@ function parsePassage(tokens, tree) {
       });
       continue;
     }
-    throw new TypeError(`No implementation available for parsing MDX element of ${tokens.at(-1).type} type`);
+    console.log(`No implementation available for parsing MDX element of ${tokens.at(-1).type} type\n${tokens.pop()}`)
 
   }
 }
