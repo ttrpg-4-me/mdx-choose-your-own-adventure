@@ -40,3 +40,31 @@ test("run a CYOA game", async () => {
   expect(cyoaRunner.inventory.credits).toBe(49);
   expect(cyoaRunner.isDone).toBe(true);
 });
+
+test("parse and run downloaded Google Doc", async () => {
+  const fileName = "A Day At The Park.md";
+  const ast = await parseMdxToAst(fs.readFileSync(fileName));
+
+  const tree = parseTree(ast);
+
+  const jsonData = JSON.stringify(tree, null, 2);
+
+  expect(jsonData).toBe(fs.readFileSync("park_output.json", "utf8"));
+
+  const cyoaRunner = new CYOARunner(tree);
+
+  expect(cyoaRunner.isDone).toBe(false);
+
+  expect(cyoaRunner.transitionOptions[0].text).toBe(
+    "Search through the trash can",
+  );
+  expect(cyoaRunner.transitionOptions[1].text).toBe("Swing on the swing");
+  expect(cyoaRunner.transitionOptions[2].text).toBe("Nap in the grass");
+  expect(cyoaRunner.transitionOptions[3].text).toBe("Go home");
+
+  cyoaRunner.transition("#swing");
+  cyoaRunner.transition("#arriving-at-the-park");
+  cyoaRunner.transition("#go-home");
+
+  expect(cyoaRunner.isDone).toBe(true);
+});

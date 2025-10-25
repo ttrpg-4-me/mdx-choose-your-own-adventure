@@ -1,0 +1,86 @@
+{
+  "passages": {
+    "#arriving-at-the-park": {
+      "initializationScript": [],
+      "text": [
+        "It’s a beautiful day at the park! What will you do?"
+      ],
+      "transitions": [
+        {
+          "transitionCriteria": null,
+          "header": "#trash-can",
+          "text": "Search through the trash can"
+        },
+        {
+          "transitionCriteria": null,
+          "header": "#swing",
+          "text": "Swing on the swing"
+        },
+        {
+          "transitionCriteria": null,
+          "header": "#nap",
+          "text": "Nap in the grass"
+        },
+        {
+          "transitionCriteria": null,
+          "header": "#go-home",
+          "text": "Go home"
+        }
+      ]
+    },
+    "#trash-can": {
+      "initializationScript": [],
+      "text": [
+        "You root through the trash can, but you don’t find anything interesting."
+      ],
+      "transitions": [
+        {
+          "transitionCriteria": null,
+          "header": "#arriving-at-the-park",
+          "text": "Go Back"
+        }
+      ]
+    },
+    "#swing": {
+      "initializationScript": [],
+      "text": [
+        "Wheeeeeeeeee!"
+      ],
+      "transitions": [
+        {
+          "transitionCriteria": null,
+          "header": "#arriving-at-the-park",
+          "text": "Go Back"
+        }
+      ]
+    },
+    "#nap": {
+      "initializationScript": [],
+      "text": [
+        "Your eyes flutter and you drift off into a peaceful slumber. You awake in the park after a few minutes, feeling refreshed!"
+      ],
+      "transitions": [
+        {
+          "transitionCriteria": null,
+          "header": "#arriving-at-the-park",
+          "text": "Go Back"
+        }
+      ]
+    },
+    "#go-home": {
+      "initializationScript": [],
+      "text": [
+        "Wow, what a day! You head home."
+      ],
+      "transitions": []
+    }
+  },
+  "metaData": {
+    "title": "A Day At The Park",
+    "author": "r0u73r"
+  },
+  "initializationScript": [],
+  "introText": [
+    "By r0u73r"
+  ]
+}

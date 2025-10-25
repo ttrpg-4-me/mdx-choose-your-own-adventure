@@ -30,12 +30,27 @@ function parseType(tokens, valid_types, list) {
 
 function convertStringMarkdownHeaderFormat(s) {
   let header = s.toLowerCase().replaceAll(" ", "-");
-  const specialCharacters = ['?', '*', '\\', '[', ']', '*', '(', ')', '/', '!', ',', '’', "'", '!']
-  for (const char of specialCharacters){
-    header = header.replace(char,"")
+  const specialCharacters = [
+    "?",
+    "*",
+    "\\",
+    "[",
+    "]",
+    "*",
+    "(",
+    ")",
+    "/",
+    "!",
+    ",",
+    "’",
+    "'",
+    "!",
+  ];
+  for (const char of specialCharacters) {
+    header = header.replace(char, "");
   }
 
-  return "#" + header
+  return "#" + header;
 }
 
 function parseTransition(transition) {
@@ -57,7 +72,9 @@ function parseTransition(transition) {
     };
   }
 
-  throw new TypeError(`No implementation available for parsing MDX element of ${transition.children[0].type} type`);
+  throw new TypeError(
+    `No implementation available for parsing MDX element of ${transition.children[0].type} type`,
+  );
 }
 
 function parsePassage(tokens, tree) {
@@ -91,17 +108,17 @@ function parsePassage(tokens, tree) {
       });
       continue;
     }
-    console.log(`No implementation available for parsing MDX element of ${tokens.at(-1).type} type\n${tokens.pop()}`)
-
+    console.log(
+      `No implementation available for parsing MDX element of ${tokens.at(-1).type} type\n${tokens.pop()}`,
+    );
   }
 }
 
 function isPassageHeader(token) {
-  return token.type == "heading" && token.depth > 1
+  return token.type == "heading" && token.depth > 1;
 }
 
 function parseIntro(tokens, tree) {
-
   while (tokens.length > 0 && !isPassageHeader(tokens.at(-1))) {
     if (scriptTypes.includes(tokens.at(-1).type)) {
       tree.initializationScript.push(tokens.pop().value);
@@ -109,19 +126,22 @@ function parseIntro(tokens, tree) {
     }
     if (tokens.at(-1).type == "paragraph") {
       tree.introText.push(tokens.pop().children[0].value);
-      continue;
-    }
-    if (tokens.at(-1).type == "heading") {
-      const title = tokens.pop().children[0].value
-      if (!("title" in tree.metaData)) {
-        tree.metaData.title = title
+      if (tree.introText.at(-1).toLowerCase().startsWith("by ")) {
+        tree.metaData.author = /^by\s+(.*)$/i.exec(tree.introText.at(-1))[1];
       }
       continue;
     }
-    console.log(`No implementation available for parsing MDX element of ${tokens.at(-1).type} type\n${tokens.pop()}`)
-
+    if (tokens.at(-1).type == "heading") {
+      const title = tokens.pop().children[0].value;
+      if (!("title" in tree.metaData)) {
+        tree.metaData.title = title;
+      }
+      continue;
+    }
+    console.log(
+      `No implementation available for parsing MDX element of ${tokens.at(-1).type} type\n${tokens.pop()}`,
+    );
   }
-
 }
 
 export function parseTree(ast) {
@@ -133,7 +153,7 @@ export function parseTree(ast) {
   tree.metaData = parseHeader(tokens);
   tree.initializationScript = [];
   tree.introText = [];
-  parseIntro(tokens, tree)
+  parseIntro(tokens, tree);
 
   // Will there be intro text?
   // Would need to parse that here is so
@@ -145,8 +165,27 @@ export function parseTree(ast) {
   return tree;
 }
 
+function stripCustomHeaderIds(mdxInput) {
+  const re = / \{#.*?}/g;
+
+  return mdxInput.toString().replace(re, "");
+}
+
+function stripBackslashes(mdxInput) {
+  const re = /\\/g;
+
+  return mdxInput.toString().replace(re, "");
+}
+
+function stripGoogleDocsArtifactsFromMarkdown(mdxInput) {
+  return stripBackslashes(stripCustomHeaderIds(mdxInput));
+}
+
 export async function parseMdxToAst(mdxInput) {
-  const file = await remark().use(remarkParse).use(remarkMdx).parse(mdxInput);
+  const file = await remark()
+    .use(remarkParse)
+    .use(remarkMdx)
+    .parse(stripGoogleDocsArtifactsFromMarkdown(mdxInput));
 
   return file;
 }
