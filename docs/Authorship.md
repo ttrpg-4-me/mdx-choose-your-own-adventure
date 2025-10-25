@@ -127,6 +127,8 @@ Hyperlinks follow the format `[visible, player facing text](#relevant-passage-na
 
 Note: Some lines end with a bunch of spaces, this is a weird Google Docs thing, you never need to end a line with a bunch of blank spaces.
 
+Note: You might see the backslash character `\` appear at random points. Ignore it. It's weird behavior from Google Docs and you can delete them if you want.
+
 ## Making a CYOA With Markdown (Advanced)
 
 Advanced behavior will require working with the markdown file directly. Consider starting the CYOA as a google doc, downloading that doc, and then editing the markdown file to add advanced behavior.
