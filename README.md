@@ -4,6 +4,10 @@ This is a tool designed to transform MDX documents into choose your own adventur
 
 At this time the repo is just a work in progress, a partial MDX parser has been built.
 
+## Writing a Choose Your Own Adventure in MDX
+
+See [Author Instructions](docs/Authorship.md)
+
 ## Usage
 
 ```console
