@@ -1,3 +1,5 @@
 index.test.js
 *.md
 *.mdx
+
+docs/
